@@ -17,7 +17,7 @@ import httpClient from "@/lib/http-client";
 import type { Service } from "@/types";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import type { AxiosError } from "axios";
-import { ArrowLeft, Check, Edit, X } from "lucide-react";
+import { ArrowLeft, Edit, X } from "lucide-react";
 import React, { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router";
 import { toast } from "sonner";
@@ -338,10 +338,10 @@ const ServicePage = () => {
     featureCategoryId: number,
     value: string | number | boolean | string[],
   ) => {
-    setChanges((prev) => {
+    setChanges((prev:any) => {
       const source = prev.features ?? s.features ?? [];
 
-      const updated = source.map((feature) =>
+      const updated = source.map((feature:any) =>
         feature.featureCategoryId === featureCategoryId
           ? {
               ...feature,

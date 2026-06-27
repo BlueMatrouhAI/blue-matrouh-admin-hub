@@ -1,7 +1,6 @@
 import PageHeader from "@/components/admin/page-header";
 import StateCard from "@/components/state-card";
 import { api } from "@/lib/api";
-import { mockHandle } from "@/lib/mock-data";
 import { useQuery } from "@tanstack/react-query";
 import {
   BadgePercent,

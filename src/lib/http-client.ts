@@ -2,7 +2,7 @@ import axios from "axios";
 import { getAccessToken } from "./auth";
 
 const httpClient = axios.create({
-  baseURL: "/api",
+  baseURL: "https://bluematrouh-backend.onrender.com/api",
   withCredentials: true,
 });
 

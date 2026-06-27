@@ -21,14 +21,13 @@ const categories: Category[] = [
   {
     _id: "c1",
     title: "Boat Rentals",
-    imageUrl: "https://images.unsplash.com/photo-1502209524164-acea936639a2?w=200",
+    imageUrl:
+      "https://images.unsplash.com/photo-1502209524164-acea936639a2?w=200",
     order: 1,
+    featureCategories: [],
     priceRequired: true,
-    featureCategories: [
-      { _id: "fc1", title: "Yacht" },
-      { _id: "fc2", title: "Speedboat" },
-      { _id: "fc3", title: "Sailboat" },
-    ],
+    createdAt: new Date(),
+    updatedAt: new Date(),
   },
   {
     _id: "c2",
@@ -36,10 +35,9 @@ const categories: Category[] = [
     imageUrl: "https://images.unsplash.com/photo-1545566239-0710c1f1cb7d?w=200",
     order: 2,
     priceRequired: true,
-    featureCategories: [
-      { _id: "fc4", title: "Deep Sea" },
-      { _id: "fc5", title: "Coastal" },
-    ],
+    featureCategories: [],
+    createdAt: new Date(),
+    updatedAt: new Date(),
   },
   {
     _id: "c3",
@@ -47,50 +45,147 @@ const categories: Category[] = [
     imageUrl: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=200",
     order: 3,
     priceRequired: false,
-    featureCategories: [
-      { _id: "fc6", title: "Scuba" },
-      { _id: "fc7", title: "Snorkeling" },
-    ],
+    featureCategories: [],
+    createdAt: new Date(),
+    updatedAt: new Date(),
   },
   {
     _id: "c4",
     title: "Water Sports",
-    imageUrl: "https://images.unsplash.com/photo-1530541930197-ff16ac917b0e?w=200",
+    imageUrl:
+      "https://images.unsplash.com/photo-1530541930197-ff16ac917b0e?w=200",
     order: 4,
     priceRequired: true,
-    featureCategories: [
-      { _id: "fc8", title: "Jet Ski" },
-      { _id: "fc9", title: "Parasailing" },
-    ],
+    featureCategories: [],
+    createdAt: new Date(),
+    updatedAt: new Date(),
   },
 ];
 
 const users: UserRef[] = [
-  { _id: "u1", username: "ahmed_seller", email: "ahmed@example.com", phoneNumber: "+201001112222", role: "seller", status: "active", isSeller: true, imageUrl: "https://i.pravatar.cc/80?img=12" },
-  { _id: "u2", username: "sara_marine", email: "sara@example.com", phoneNumber: "+201005556666", role: "seller", status: "pending", isSeller: true, imageUrl: "https://i.pravatar.cc/80?img=47" },
-  { _id: "u3", username: "omar_dive", email: "omar@example.com", phoneNumber: "+201007778888", role: "seller", status: "active", isSeller: true, imageUrl: "https://i.pravatar.cc/80?img=33" },
-  { _id: "u4", username: "layla", email: "layla@example.com", phoneNumber: "+201009990000", role: "user", status: "active", isSeller: false, imageUrl: "https://i.pravatar.cc/80?img=5" },
-  { _id: "u5", username: "youssef", email: "youssef@example.com", role: "user", status: "active", isSeller: false },
-  { _id: "u6", username: "mariam", email: "mariam@example.com", role: "user", status: "active", isSeller: false, imageUrl: "https://i.pravatar.cc/80?img=20" },
-  { _id: "u7", username: "khaled_boats", email: "khaled@example.com", role: "seller", status: "pending", isSeller: true, imageUrl: "https://i.pravatar.cc/80?img=15" },
-  { _id: "u8", username: "noor", email: "noor@example.com", role: "user", status: "active", isSeller: false, imageUrl: "https://i.pravatar.cc/80?img=25" },
-  { _id: "u9", username: "hassan", email: "hassan@example.com", role: "user", status: "suspended", isSeller: false },
-  { _id: "u10", username: "fatma_tours", email: "fatma@example.com", role: "seller", status: "active", isSeller: true, imageUrl: "https://i.pravatar.cc/80?img=49" },
-  { _id: "u11", username: "ali", email: "ali@example.com", role: "user", status: "active", isSeller: false },
-  { _id: "u12", username: "rana", email: "rana@example.com", role: "user", status: "active", isSeller: false, imageUrl: "https://i.pravatar.cc/80?img=44" },
+  {
+    _id: "u1",
+    username: "ahmed_seller",
+    email: "ahmed@example.com",
+    phoneNumber: "+201001112222",
+    role: "seller",
+    status: "active",
+    isSeller: true,
+    imageUrl: "https://i.pravatar.cc/80?img=12",
+  },
+  {
+    _id: "u2",
+    username: "sara_marine",
+    email: "sara@example.com",
+    phoneNumber: "+201005556666",
+    role: "seller",
+    status: "pending",
+    isSeller: true,
+    imageUrl: "https://i.pravatar.cc/80?img=47",
+  },
+  {
+    _id: "u3",
+    username: "omar_dive",
+    email: "omar@example.com",
+    phoneNumber: "+201007778888",
+    role: "seller",
+    status: "active",
+    isSeller: true,
+    imageUrl: "https://i.pravatar.cc/80?img=33",
+  },
+  {
+    _id: "u4",
+    username: "layla",
+    email: "layla@example.com",
+    phoneNumber: "+201009990000",
+    role: "user",
+    status: "active",
+    isSeller: false,
+    imageUrl: "https://i.pravatar.cc/80?img=5",
+  },
+  {
+    _id: "u5",
+    username: "youssef",
+    email: "youssef@example.com",
+    role: "user",
+    status: "active",
+    isSeller: false,
+  },
+  {
+    _id: "u6",
+    username: "mariam",
+    email: "mariam@example.com",
+    role: "user",
+    status: "active",
+    isSeller: false,
+    imageUrl: "https://i.pravatar.cc/80?img=20",
+  },
+  {
+    _id: "u7",
+    username: "khaled_boats",
+    email: "khaled@example.com",
+    role: "seller",
+    status: "pending",
+    isSeller: true,
+    imageUrl: "https://i.pravatar.cc/80?img=15",
+  },
+  {
+    _id: "u8",
+    username: "noor",
+    email: "noor@example.com",
+    role: "user",
+    status: "active",
+    isSeller: false,
+    imageUrl: "https://i.pravatar.cc/80?img=25",
+  },
+  {
+    _id: "u9",
+    username: "hassan",
+    email: "hassan@example.com",
+    role: "user",
+    status: "suspended",
+    isSeller: false,
+  },
+  {
+    _id: "u10",
+    username: "fatma_tours",
+    email: "fatma@example.com",
+    role: "seller",
+    status: "active",
+    isSeller: true,
+    imageUrl: "https://i.pravatar.cc/80?img=49",
+  },
+  {
+    _id: "u11",
+    username: "ali",
+    email: "ali@example.com",
+    role: "user",
+    status: "active",
+    isSeller: false,
+  },
+  {
+    _id: "u12",
+    username: "rana",
+    email: "rana@example.com",
+    role: "user",
+    status: "active",
+    isSeller: false,
+    imageUrl: "https://i.pravatar.cc/80?img=44",
+  },
 ];
 
 // Deterministic 30-day signup trend
-const signupTrend: { date: string; users: number; sellers: number }[] = Array.from({ length: 30 }, (_, i) => {
-  const d = new Date(Date.now() - (29 - i) * 86400000);
-  const seed = (i * 9301 + 49297) % 233280;
-  const rand = seed / 233280;
-  return {
-    date: d.toISOString().slice(5, 10),
-    users: 2 + Math.floor(rand * 8) + (i % 7 === 0 ? 4 : 0),
-    sellers: Math.floor(rand * 3) + (i % 5 === 0 ? 1 : 0),
-  };
-});
+const signupTrend: { date: string; users: number; sellers: number }[] =
+  Array.from({ length: 30 }, (_, i) => {
+    const d = new Date(Date.now() - (29 - i) * 86400000);
+    const seed = (i * 9301 + 49297) % 233280;
+    const rand = seed / 233280;
+    return {
+      date: d.toISOString().slice(5, 10),
+      users: 2 + Math.floor(rand * 8) + (i % 7 === 0 ? 4 : 0),
+      sellers: Math.floor(rand * 3) + (i % 5 === 0 ? 1 : 0),
+    };
+  });
 
 const now = Date.now();
 const days = (n: number) => new Date(now + n * 86400000).toISOString();
@@ -102,84 +197,20 @@ const services: Service[] = [
     description: "A 3-hour sunset cruise aboard a 60ft luxury yacht.",
     serviceCatId: categories[0],
     userId: users[0],
-    area: areas[0],
+    area: {
+      areaId: areas[0]._id,
+      areaName: areas[0].name,
+    },
     price: 450,
-    features: ["Captain included", "Snacks", "Wi-Fi"],
-    imageUrls: ["https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=600"],
+    features: [],
+    imageUrls: [
+      "https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=600",
+    ],
     status: "pending",
-    createdAt: days(-1),
-    rating: { avg: 4.6, count: 23 },
-  },
-  {
-    _id: "s2",
-    title: "Deep Sea Fishing Adventure",
-    description: "Full-day fishing trip with experienced crew.",
-    serviceCatId: categories[1],
-    userId: users[1],
-    area: areas[1],
-    price: 280,
-    features: ["Equipment provided", "Lunch"],
-    imageUrls: ["https://images.unsplash.com/photo-1544551763-77ef2d0cfc6c?w=600"],
-    status: "pending",
-    createdAt: days(-2),
-    rating: { avg: 4.2, count: 11 },
-  },
-  {
-    _id: "s3",
-    title: "Beginner Scuba Diving Lesson",
-    description: "Certified instructors, all gear included.",
-    serviceCatId: categories[2],
-    userId: users[2],
-    area: areas[2],
-    price: 120,
-    features: ["Gear", "PADI instructor"],
-    imageUrls: ["https://images.unsplash.com/photo-1551244072-5d12893278ab?w=600"],
-    status: "approved",
-    createdAt: days(-5),
-    rating: { avg: 4.9, count: 64 },
-  },
-  {
-    _id: "s4",
-    title: "Jet Ski Rental — 1 Hour",
-    description: "Brand new Yamaha jet skis.",
-    serviceCatId: categories[3],
-    userId: users[0],
-    area: areas[3],
-    price: 90,
-    features: ["Life jacket", "Brief intro"],
-    imageUrls: ["https://images.unsplash.com/photo-1530541930197-ff16ac917b0e?w=600"],
-    status: "approved",
-    createdAt: days(-10),
-    rating: { avg: 4.4, count: 38 },
-  },
-  {
-    _id: "s5",
-    title: "Coastal Family Fishing",
-    description: "Kid-friendly half-day trip near the coast.",
-    serviceCatId: categories[1],
-    userId: users[1],
-    area: areas[0],
-    price: 150,
-    features: ["Family friendly", "Snacks"],
-    imageUrls: ["https://images.unsplash.com/photo-1502635994848-1a26eb4ce819?w=600"],
-    status: "rejected",
-    rejectReason: "Photos do not match service description.",
-    createdAt: days(-7),
-    rating: { avg: 3.8, count: 4 },
-  },
-  {
-    _id: "s6",
-    title: "Sailing Lessons for Two",
-    description: "Learn to sail in a relaxed environment.",
-    serviceCatId: categories[0],
-    userId: users[2],
-    area: areas[2],
-    price: 220,
-    features: ["2 people", "2 hours"],
-    imageUrls: ["https://images.unsplash.com/photo-1500627964684-141351970a7f?w=600"],
-    status: "pending",
-    createdAt: days(0),
-    rating: { avg: 0, count: 0 },
+    createdAt: new Date(),
+    isDeleted: false,
+    avgRating: 0,
+    reviewCount: 0,
   },
 ];
 
@@ -217,7 +248,12 @@ const offers: Offer[] = [
 ];
 
 const ads: Ad[] = [
-  { _id: "ad1", serviceId: services[2], startTime: days(-2), endTime: days(12) },
+  {
+    _id: "ad1",
+    serviceId: services[2],
+    startTime: days(-2),
+    endTime: days(12),
+  },
   { _id: "ad2", serviceId: services[3], startTime: days(-5), endTime: days(2) },
 ];
 
@@ -255,7 +291,11 @@ function matchId(path: string, prefix: string) {
   return rest || null;
 }
 
-export function mockHandle(rawPath: string, method: string, body?: unknown): unknown {
+export function mockHandle(
+  rawPath: string,
+  method: string,
+  body?: unknown,
+): unknown {
   const path = rawPath.split("?")[0].replace(/\/+$/, "") || "/";
 
   // ----- stats -----
@@ -263,7 +303,9 @@ export function mockHandle(rawPath: string, method: string, body?: unknown): unk
     const totalUsers = users.length;
     const sellers = users.filter((u) => u.isSeller).length;
     const buyers = totalUsers - sellers;
-    const pendingSellers = users.filter((u) => u.isSeller && u.status === "pending").length;
+    const pendingSellers = users.filter(
+      (u) => u.isSeller && u.status === "pending",
+    ).length;
     const suspended = users.filter((u) => u.status === "suspended").length;
     return {
       users: {
@@ -298,7 +340,8 @@ export function mockHandle(rawPath: string, method: string, body?: unknown): unk
   }
   if (path === "/users/trend") return signupTrend;
 
-  if (path === "/services/pending") return services.filter((s) => s.status === "pending");
+  if (path === "/services/pending")
+    return services.filter((s) => s.status === "pending");
   if (path === "/services") return services;
   {
     const id = matchId(path, "/services/approve/");
@@ -314,7 +357,6 @@ export function mockHandle(rawPath: string, method: string, body?: unknown): unk
       const s = services.find((x) => x._id === id);
       if (s) {
         s.status = "rejected";
-        s.rejectReason = (body as any)?.rejectReason || "Rejected";
       }
       return { ok: true };
     }
@@ -326,7 +368,8 @@ export function mockHandle(rawPath: string, method: string, body?: unknown): unk
 
   // ----- offers -----
   if (path === "/offers") return offers.filter((o) => o.status === "approved");
-  if (path === "/offers/pending") return offers.filter((o) => o.status === "pending");
+  if (path === "/offers/pending")
+    return offers.filter((o) => o.status === "pending");
   {
     const id = matchId(path, "/offers/approve/");
     if (id && method === "POST") {

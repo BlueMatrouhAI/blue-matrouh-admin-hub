@@ -1,9 +1,14 @@
-import React from 'react'
+import { useUser } from "@/hooks/useUser";
+import { Navigate, Outlet } from "react-router";
 
 const GuestRoute = () => {
-  return (
-    <div>GuestRoute</div>
-  )
-}
+  const { user } = useUser();
 
-export default GuestRoute
+  if (user) {
+    return <Navigate to="/" replace />;
+  }
+
+  return <Outlet />;
+};
+
+export default GuestRoute;

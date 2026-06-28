@@ -12,6 +12,7 @@ import AreasPage from "./pages/areas-page";
 import UsersPage from "./pages/users-page";
 import LoginPage from "./pages/login-page";
 import ProtectedRoute from "./components/protected-route";
+import GuestRoute from "./components/guest-route";
 
 const AppRoutes = () => {
   const location = useLocation();
@@ -38,7 +39,9 @@ const AppRoutes = () => {
           <Route path="/users" element={<UsersPage />} />
         </Route>
       </Route>
-      <Route path="/login" element={<LoginPage />} />
+      <Route element={<GuestRoute />}>
+        <Route path="/login" element={<LoginPage />} />
+      </Route>
     </Routes>
   );
 };

@@ -1,20 +1,15 @@
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Spinner } from "@/components/ui/spinner";
-import { UserContext } from "@/context/user-context";
-import { setAccessToken } from "@/lib/auth";
+import { useUser } from "@/hooks/useUser";
 import httpClient from "@/lib/http-client";
+import { cn } from "@/lib/utils";
 import type { UserRef } from "@/types";
+import { GoogleLogin } from "@react-oauth/google";
 import { useMutation } from "@tanstack/react-query";
 import type { AxiosError } from "axios";
-import { useContext, useState } from "react";
 import { useNavigate } from "react-router";
 import { toast } from "sonner";
 
 const LoginPage = () => {
-  const [token, setToken] = useState<string>("");
-  const { setUser } = useContext(UserContext);
+  const { setUser } = useUser();
   const navigate = useNavigate();
   const { mutate, isPending } = useMutation<
     {
@@ -22,10 +17,11 @@ const LoginPage = () => {
       token: string;
       data: UserRef;
     },
-    AxiosError
+    AxiosError,
+    { token: string }
   >({
     mutationKey: ["login"],
-    mutationFn: async () => {
+    mutationFn: async ({ token }) => {
       const res = await httpClient.post<{
         message: string;
         token: string;
@@ -38,7 +34,7 @@ const LoginPage = () => {
     },
     onSuccess: ({ data, token, message }) => {
       if (data.role !== "admin") return;
-      setAccessToken(token);
+      localStorage.setItem("token",token)
       setUser(data);
       navigate("/");
       toast.success(message);
@@ -47,6 +43,7 @@ const LoginPage = () => {
       toast.error(message);
     },
   });
+
   return (
     <div
       className="flex min-h-screen items-center justify-center px-4"
@@ -68,24 +65,14 @@ const LoginPage = () => {
           </div>
         </div>
 
-        <div className="space-y-4">
-          <div className="space-y-1.5">
-            <Label htmlFor="token">JWT Token</Label>
-            <Input
-              id="token"
-              placeholder="Paste token from /api/auth/sign-in-with-google"
-              onChange={(e) => setToken(e.currentTarget.value)}
-            />
-          </div>
-          <Button
-            className="w-full"
-            size="lg"
-            onClick={() => mutate()}
-            disabled={isPending}
-          >
-            Continue to dashboard
-            {isPending && <Spinner data-icon="inline-start" />}
-          </Button>
+        <div className={cn(isPending && "pointer-events-none")}>
+          <GoogleLogin
+            onSuccess={({ credential }) => {
+              if (credential) {
+                mutate({ token: credential });
+              }
+            }}
+          />
         </div>
       </div>
     </div>

@@ -1,10 +1,14 @@
-import { getAccessToken } from "@/lib/auth";
+import { useUser } from "@/hooks/useUser";
 import { Navigate, Outlet } from "react-router";
 
 const ProtectedRoute = () => {
-  const token = getAccessToken();
+  const { user, loading } = useUser()
 
-  if (!token) {
+  if (loading) {
+    return null;
+  }
+
+  if (!user) {
     return <Navigate to="/login" replace />;
   }
 

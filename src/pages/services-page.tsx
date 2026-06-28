@@ -1,4 +1,4 @@
-import AddService from "@/components/actions/add-service";
+import AddService from "@/components/services/add-service";
 import PageHeader from "@/components/admin/page-header";
 import CategoryService from "@/components/services/category-service";
 import PendingService from "@/components/services/pending-service";

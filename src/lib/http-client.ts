@@ -1,14 +1,14 @@
 import axios from "axios";
-import { getAccessToken } from "./auth";
 
 const httpClient = axios.create({
-  baseURL: "https://bluematrouh-backend.onrender.com/api",
+  baseURL: `${import.meta.env.VITE_BASE_URL}/api`,
   withCredentials: true,
 });
 
 httpClient.interceptors.request.use(
   (config) => {
-    const token = getAccessToken();
+    const token = localStorage.getItem("token");
+    console.log(token)
 
     if (token) {
       config.headers.Authorization = `${token}`;
@@ -17,6 +17,18 @@ httpClient.interceptors.request.use(
     return config;
   },
   (err) => Promise.reject(err),
+);
+
+httpClient.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response?.status === 401) {
+      localStorage.removeItem("token");
+      window.dispatchEvent(new Event("logout"));
+    }
+
+    return Promise.reject(error);
+  },
 );
 
 export default httpClient;

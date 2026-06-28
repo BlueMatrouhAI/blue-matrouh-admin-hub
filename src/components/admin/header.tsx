@@ -1,12 +1,11 @@
 import { Button } from "../ui/button";
 import { Menu } from "lucide-react";
 import { useMenu } from "@/hooks/useMenu";
-import { useContext } from "react";
-import { UserContext } from "@/context/user-context";
+import { useUser } from "@/hooks/useUser";
 
 const Header = () => {
   const { setOpen } = useMenu();
-  const {user} = useContext(UserContext)
+  const {user} = useUser()
   return (
     <header className="sticky top-0 z-20 flex h-16 items-center gap-3 border-b bg-card/80 px-4 backdrop-blur md:px-6">
       <Button
